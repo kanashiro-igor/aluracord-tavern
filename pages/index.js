@@ -38,7 +38,7 @@ function Title(props) {
             <style jsx  >{`
                 ${Tag} {
                     color: ${appConfig.theme.colors.neutrals["000"]};
-                    font-size: 48px;
+                    font-size: 36px;
                     font-weight: 800;
                 }
             `}
@@ -88,7 +88,7 @@ export default function HomePage() {
                         <Title tag="h1">Welcome traveler</Title>
                         <Text variant="body3" 
                             styleSheet={{ 
-                                fontSize: '26px',
+                                fontSize: '22px',
                                 marginTop: '32px', 
                                 marginBottom: '32px', 
                                 color: appConfig.theme.colors.neutrals["000"], 
@@ -107,7 +107,7 @@ export default function HomePage() {
                                 }
                             }}
                             styleSheet={{
-                                fontSize: '22px',
+                                fontSize: '20px',
                                 backgroundImage: 'url(https://as2.ftcdn.net/v2/jpg/03/59/71/73/1000_F_359717340_81GSpItqigxFujGnSnD9O7hDjpsz2ND1.jpg)'
                             }}
                         />
@@ -154,7 +154,7 @@ export default function HomePage() {
                                 backgroundColor: appConfig.theme.colors.brown.darkBrown,
                                 padding: '3px 10px',
                                 borderRadius: '1000px',
-                                fontSize: '24px',
+                                fontSize: '18px',
                                 fontFamily: 'Enchanted Land'
                             }}
                         >
