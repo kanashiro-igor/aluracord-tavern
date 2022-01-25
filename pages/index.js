@@ -103,9 +103,7 @@ export default function HomePage() {
                             textFieldColors={{
                                 neutral: {
                                     textColor: appConfig.theme.colors.brown.tan,
-                                    mainColor: appConfig.theme.colors.neutrals[900],
-                                    mainColorHighlight: appConfig.theme.colors.yellow.yellow,
-                                    backgroundColor: appConfig.theme.colors.neutrals[800],
+                                    mainColorHighlight: appConfig.theme.colors.yellow.yellow
                                 }
                             }}
                             styleSheet={{
@@ -117,12 +115,6 @@ export default function HomePage() {
                             type='submit'
                             label="Let's drink"
                             fullWidth
-                            buttonColors={{
-                                contrastColor: appConfig.theme.colors.neutrals["000"],
-                                mainColor: appConfig.theme.colors.yellow.lightYellow,
-                                mainColorLight: appConfig.theme.colors.yellow.yellow,
-                                mainColorStrong: appConfig.theme.colors.yellow.yellow,
-                            }}
                             styleSheet={{
                                 backgroundImage: 'url(https://as2.ftcdn.net/v2/jpg/03/59/71/73/1000_F_359717340_81GSpItqigxFujGnSnD9O7hDjpsz2ND1.jpg)'
                             }}
