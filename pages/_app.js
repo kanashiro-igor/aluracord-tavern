@@ -9,6 +9,7 @@ function GlobalStyle() {
         }
         body {
           font-family: 'Enchanted Land';
+          font-size: 20px;
         }
         /* App fit Height */ 
         html, body, #__next {

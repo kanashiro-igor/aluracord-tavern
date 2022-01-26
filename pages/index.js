@@ -54,23 +54,23 @@ export default function HomePage() {
                     {/* Formulário */}
                     <Box
                         as="form"
-                        onSubmit={function(event) {
+                        onSubmit={function (event) {
                             event.preventDefault();
                             // window.location.href = '/chat';
                             roteamento.push('/chat');
                         }}
                         styleSheet={{
                             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                            width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px'
+                            width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
                         }}
                     >
                         <Title tag="h1">Welcome traveler</Title>
-                        <Text variant="body3" 
-                            styleSheet={{ 
+                        <Text variant="body3"
+                            styleSheet={{
                                 fontSize: '22px',
-                                marginTop: '32px', 
-                                marginBottom: '32px', 
-                                color: appConfig.theme.colors.neutrals["000"], 
+                                marginTop: '32px',
+                                marginBottom: '32px',
+                                color: appConfig.theme.colors.neutrals["000"],
                                 fontFamily: 'Enchanted Land'
                             }}
                         >
@@ -86,21 +86,23 @@ export default function HomePage() {
                             fullWidth
                             textFieldColors={{
                                 neutral: {
-                                    textColor: appConfig.theme.colors.brown.tan,
-                                    mainColorHighlight: appConfig.theme.colors.yellow.yellow,
-                                    mainColor: appConfig.theme.colors.yellow.darkYellow,
+                                    textColor: appConfig.theme.colors.custom.tan,
+                                    mainColorHighlight: appConfig.theme.colors.custom.tan,
+                                    mainColor: appConfig.theme.colors.custom.darkBrown,
                                 }
                             }}
                             styleSheet={{
                                 fontSize: '20px',
+                                border: '1px solid black',
                                 backgroundImage: 'url(https://image.freepik.com/free-photo/wooden-textured-background_53876-14865.jpg)'
                             }}
                         />
                         <Button
                             type='submit'
-                            label="Let's drink"
+                            label="Let's Drink !"
                             fullWidth
                             styleSheet={{
+                                border: '1px solid black',
                                 backgroundImage: 'url(https://image.freepik.com/free-photo/wooden-textured-background_53876-14865.jpg)'
                             }}
                         />
@@ -127,8 +129,9 @@ export default function HomePage() {
                         <Image
                             styleSheet={{
                                 borderRadius: '50%',
+                                border: '1px solid black',
                                 marginBottom: '16px',
-                                backgroundColor: appConfig.theme.colors.brown.darkBrown
+                                backgroundColor: appConfig.theme.colors.custom.darkBrown
                             }}
                             src={`https://github.com/${username}.png`}
                         />
@@ -136,9 +139,10 @@ export default function HomePage() {
                             variant="body4"
                             styleSheet={{
                                 color: appConfig.theme.colors.neutrals[200],
-                                backgroundColor: appConfig.theme.colors.brown.darkBrown,
+                                backgroundColor: appConfig.theme.colors.custom.darkBrown,
                                 padding: '3px 10px',
                                 borderRadius: '1000px',
+                                border: '1px solid black',
                                 fontSize: '18px',
                                 fontFamily: 'Enchanted Land'
                             }}

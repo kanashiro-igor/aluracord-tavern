@@ -28,15 +28,11 @@
                 "900": "#101418",
                 "999": "#080A0C"
             },
-            "yellow": {
-                "yellow": "#FFD61F",
-                "darkYellow": "dark-yellow",
-                "lightYellow": "#FFCF00"
-            },
-            "brown": {
+            "custom": {
                 "tan": "#D4B087",
                 "coyoteBrown": "#78542B",
-                "darkBrown": "#694A26"
+                "darkBrown": "#694A26",
+                "darkLiver": "#484041"
             }
         }
     },
