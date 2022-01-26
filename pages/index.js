@@ -30,11 +30,10 @@ export default function HomePage() {
             <Box
                 styleSheet={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    // backgroundImage: 'url(https://wallpaperaccess.com/full/1886598.jpg)',
+                    backgroundImage: 'url(https://wallpaperaccess.com/full/1886598.jpg)',
                     backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
                 }}
             >
-                <Image src="../images/imagemBackground.png" />
                 <Box
                     styleSheet={{
                         display: 'flex',
