@@ -1,34 +1,7 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
+import React from 'react';
+import { useRouter } from 'next/router';
 import appConfig from '../config.json';
-
-function GlobalStyle() {
-    return (
-        <style global jsx>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          list-style: none;
-        }
-        body {
-          font-family: 'Enchanted Land';
-        }
-        /* App fit Height */ 
-        html, body, #__next {
-          min-height: 100vh;
-          display: flex;
-          flex: 1;
-        }
-        #__next {
-          flex: 1;
-        }
-        #__next > * {
-          flex: 1;
-        }
-        /* ./App fit Height */ 
-      `}</style>
-    );
-}
 
 function Title(props) {
     const Tag = props.tag || "h1";
@@ -48,18 +21,20 @@ function Title(props) {
 }
 
 export default function HomePage() {
-    const username = 'kanashiro-igor';
+    // const username = 'kanashiro-igor';
+    const [username, setUsername] = React.useState('kanashiro-igor');
+    const roteamento = useRouter();
 
     return (
         <>
-            <GlobalStyle />
             <Box
                 styleSheet={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    backgroundImage: 'url(https://wallpaperaccess.com/full/1886598.jpg)',
+                    // backgroundImage: 'url(https://wallpaperaccess.com/full/1886598.jpg)',
                     backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
                 }}
             >
+                <Image src="../images/imagemBackground.png" />
                 <Box
                     styleSheet={{
                         display: 'flex',
@@ -80,6 +55,11 @@ export default function HomePage() {
                     {/* Formulário */}
                     <Box
                         as="form"
+                        onSubmit={function(event) {
+                            event.preventDefault();
+                            // window.location.href = '/chat';
+                            roteamento.push('/chat');
+                        }}
                         styleSheet={{
                             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                             width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px'
@@ -99,16 +79,22 @@ export default function HomePage() {
                         </Text>
 
                         <TextField
+                            value={username}
+                            onChange={function (event) {
+                                const valor = event.target.value;
+                                setUsername(valor);
+                            }}
                             fullWidth
                             textFieldColors={{
                                 neutral: {
                                     textColor: appConfig.theme.colors.brown.tan,
-                                    mainColorHighlight: appConfig.theme.colors.yellow.yellow
+                                    mainColorHighlight: appConfig.theme.colors.yellow.yellow,
+                                    mainColor: appConfig.theme.colors.yellow.darkYellow,
                                 }
                             }}
                             styleSheet={{
                                 fontSize: '20px',
-                                backgroundImage: 'url(https://as2.ftcdn.net/v2/jpg/03/59/71/73/1000_F_359717340_81GSpItqigxFujGnSnD9O7hDjpsz2ND1.jpg)'
+                                backgroundImage: 'url(https://image.freepik.com/free-photo/wooden-textured-background_53876-14865.jpg)'
                             }}
                         />
                         <Button
@@ -116,7 +102,7 @@ export default function HomePage() {
                             label="Let's drink"
                             fullWidth
                             styleSheet={{
-                                backgroundImage: 'url(https://as2.ftcdn.net/v2/jpg/03/59/71/73/1000_F_359717340_81GSpItqigxFujGnSnD9O7hDjpsz2ND1.jpg)'
+                                backgroundImage: 'url(https://image.freepik.com/free-photo/wooden-textured-background_53876-14865.jpg)'
                             }}
                         />
                     </Box>
@@ -167,17 +153,3 @@ export default function HomePage() {
         </>
     );
 }
-
-// React component
-// function HomePage() {
-//     // JSX
-//     return (
-//         <div>
-//             <GlobalStyle />
-//             <Title tag="h1">Welcome traveler!</Title>
-//             <h2>Discord - Alura Tavern</h2>
-//         </div>
-//     )
-// }
-
-// export default HomePage
