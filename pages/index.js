@@ -61,7 +61,7 @@ export default function HomePage() {
                         onSubmit={function (event) {
                             event.preventDefault();
                             // window.location.href = '/chat';
-                            roteamento.push('/chat');
+                            roteamento.push(`/chat?username=${username}`);
                         }}
                         styleSheet={{
                             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
@@ -155,13 +155,14 @@ export default function HomePage() {
                         margin: "1rem",
                         padding: "1rem",
                         color: "white",
-                        backgroundImage: "url(https://image.freepik.com/free-photo/brown-wooden-flooring_53876-90802.jpg)",
+                        backgroundImage: `url(/images/quadroAtrasImgPerfil.png)`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
                         width: "18rem",
                         height: "24rem",
                         fontFamily: "Enchanted Land",
                         fontSize: "20px",
                         display: "flex",
-                        border: "1px solid black",
                         position: "relative",
                         flexDirection: {
                             xs: 'column',
