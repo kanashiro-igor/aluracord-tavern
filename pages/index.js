@@ -29,9 +29,15 @@ export default function HomePage() {
         <>
             <Box
                 styleSheet={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    backgroundImage: 'url(https://wallpaperaccess.com/full/1886598.jpg)',
-                    backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
+                    display: 'flex', justifyContent: 'center', alignItems: 'center',
+                    flexDirection: {
+                        xs: 'column',
+                        sm: 'row',
+                    },
+                    backgroundImage: `url(/images/imagemBackground.png)`,
+                    backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
+                    backgroundBlendMode: 'multiply',
+
                 }}
             >
                 <Box
@@ -43,12 +49,10 @@ export default function HomePage() {
                             xs: 'column',
                             sm: 'row',
                         },
-                        width: '100%', maxWidth: '700px',
+                        width: '70%', maxWidth: '700px',
                         borderRadius: '5px', padding: '32px', margin: '16px',
-                        borderColor: appConfig.theme.colors.neutrals[999],
-                        border: '1px solid',
-                        boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
-                        backgroundImage: 'url(https://image.freepik.com/free-photo/brown-wooden-flooring_53876-90802.jpg)'
+                        backgroundImage: `url(/images/fundoLoginSemLuz.png)`,
+                        backgroundSize: '100%',
                     }}
                 >
                     {/* Formulário */}
@@ -93,8 +97,7 @@ export default function HomePage() {
                             }}
                             styleSheet={{
                                 fontSize: '20px',
-                                border: '1px solid black',
-                                backgroundImage: 'url(https://image.freepik.com/free-photo/wooden-textured-background_53876-14865.jpg)'
+                                backgroundImage: `url(/images/quadroDigitarInfoLogin.png)`,
                             }}
                         />
                         <Button
@@ -102,8 +105,7 @@ export default function HomePage() {
                             label="Let's Drink !"
                             fullWidth
                             styleSheet={{
-                                border: '1px solid black',
-                                backgroundImage: 'url(https://image.freepik.com/free-photo/wooden-textured-background_53876-14865.jpg)'
+                                backgroundImage: `url(/images/quadroEntrarLogin.png)`,
                             }}
                         />
                     </Box>
@@ -118,8 +120,7 @@ export default function HomePage() {
                             alignItems: 'center',
                             maxWidth: '200px',
                             padding: '16px',
-                            backgroundImage: 'url(https://image.freepik.com/free-photo/wooden-background_24972-623.jpg)',
-                            border: '1px solid',
+                            backgroundImage: `url(/images/quadroAtrasImgPerfil.png)`,
                             borderColor: appConfig.theme.colors.neutrals[999],
                             borderRadius: '10px',
                             flex: 1,
@@ -129,9 +130,7 @@ export default function HomePage() {
                         <Image
                             styleSheet={{
                                 borderRadius: '50%',
-                                border: '1px solid black',
                                 marginBottom: '16px',
-                                backgroundColor: appConfig.theme.colors.custom.darkBrown
                             }}
                             src={`https://github.com/${username}.png`}
                         />
@@ -139,10 +138,9 @@ export default function HomePage() {
                             variant="body4"
                             styleSheet={{
                                 color: appConfig.theme.colors.neutrals[200],
-                                backgroundColor: appConfig.theme.colors.custom.darkBrown,
+                                backgroundImage: `url(/images/quadroComNomePerfil.png)`,
                                 padding: '3px 10px',
                                 borderRadius: '1000px',
-                                border: '1px solid black',
                                 fontSize: '18px',
                                 fontFamily: 'Enchanted Land'
                             }}
@@ -151,6 +149,28 @@ export default function HomePage() {
                         </Text>
                     </Box>
                     {/* Photo Area */}
+                </Box>
+                <Box
+                    styleSheet={{
+                        margin: "1rem",
+                        padding: "1rem",
+                        color: "white",
+                        backgroundImage: "url(https://image.freepik.com/free-photo/brown-wooden-flooring_53876-90802.jpg)",
+                        width: "18rem",
+                        height: "24rem",
+                        fontFamily: "Enchanted Land",
+                        fontSize: "20px",
+                        display: "flex",
+                        border: "1px solid black",
+                        position: "relative",
+                        flexDirection: {
+                            xs: 'column',
+                            sm: 'row',
+                        },
+                    }}
+
+                >
+                    <h2>Github Info</h2>
                 </Box>
             </Box>
         </>
