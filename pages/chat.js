@@ -134,7 +134,7 @@ export default function ChatPage() {
                                 display: 'inline-block',
                                 marginRight: '8px',
                             }}
-                            src={`https://cdn-icons.flaticon.com/png/512/2858/premium/2858842.png?token=exp=1643239420~hmac=e900f28077191cb0821d63825d0d45f4`}
+                            src={`/images/sendMessage.png`}
                             onClick={() => {
                                 if (mensagem.length > 0) {
                                     handleNovaMensagem(mensagem);
