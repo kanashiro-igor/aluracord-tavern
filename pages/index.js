@@ -21,9 +21,11 @@ function Title(props) {
 }
 
 export default function HomePage() {
-    // const username = 'kanashiro-igor';
-    const [username, setUsername] = React.useState('kanashiro-igor');
+    
+    
     const roteamento = useRouter();
+    // const username = roteamento.query.username;
+    const [username, setUsername] = React.useState(roteamento.query.username);
 
     return (
         <>

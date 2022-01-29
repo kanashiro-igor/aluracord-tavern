@@ -184,6 +184,8 @@ export default function ChatPage() {
 }
 
 function Header() {
+    const roteamento = useRouter();
+    const usuarioLogado = roteamento.query.username;
     return (
         <>
             <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }} >
@@ -200,7 +202,10 @@ function Header() {
                     variant='tertiary'
                     colorVariant='neutral'
                     label='Logout'
-                    href="/"
+                    onClick={function(event){
+                        event.preventDefault(event);
+                        roteamento.push(`/?username=${usuarioLogado}`);
+                    }}
                 />
             </Box>
         </>
