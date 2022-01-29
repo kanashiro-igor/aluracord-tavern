@@ -2,17 +2,38 @@ import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React from 'react';
 import appConfig from '../config.json';
 import { createClient } from '@supabase/supabase-js';
+import { useRouter } from 'next/router';
+import { ButtonSendSticker } from '../src/components/ButtonSendSticker';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzI4NjYyMCwiZXhwIjoxOTU4ODYyNjIwfQ.8CGsf-FI7b0nGy_TMECVGKxnew0if7FH3mvvFzjMUFY';
 const SUPABASE_URL = 'https://byhjlsixdqcjkdqjxshw.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-
+function escutaMensagensEmTempoReal(adicionaMensagem) {
+    return supabaseClient
+        .from('mensagens')
+        .on('INSERT', (respostaLive) => {
+            adicionaMensagem(respostaLive.new);
+        })
+        .subscribe();
+}
 
 export default function ChatPage() {
-
+    const roteamento = useRouter();
+    const usuarioLogado = roteamento.query.username;
     const [mensagem, setMensagem] = React.useState('');
     const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
+        // {
+        // id: 1,
+        // de: 'kanashiro-Igor',
+        // texto: `:sticker: https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_3.png`
+        // },
+        // {
+        //     id: 2,
+        //     de: 'peas',
+        //     texto: 'ternario triste'
+        // }
+    
 
     React.useEffect(() => {
         supabaseClient
@@ -20,24 +41,32 @@ export default function ChatPage() {
             .select('*')
             .order("id", { ascending: false })
             .then(({ data }) => {
-                console.log('Dados da consulta:', data);
                 setListaDeMensagens(data);
             });
+        escutaMensagensEmTempoReal((novaMensagem)=>{
+            // console.log('Nova mensagem', novaMensagem);
+            // console.log('lista de mensagens: ', listaDeMensagens);
+            setListaDeMensagens((valorAtualDaLista)=>{
+                // console.log('Valor da lista atualizado: ', valorAtualDaLista);
+                return [
+                    novaMensagem,
+                    ...valorAtualDaLista,
+                ]
+            })
+        });
     }, []);
 
     function handleNovaMensagem(novaMensagem) {
         const mensagem = {
-            // id: listaDeMensagens.length + 1,
-            de: 'kanashiro-igor',
+            de: usuarioLogado,
             texto: novaMensagem,
-        }
+        };
 
         supabaseClient
-            .from(`mensagens`)
+            .from('mensagens')
             .insert([mensagem])
-            .then(data => {
-                console.log('Criando mensagem:', data[0])
-                setListaDeMensagens([mensagem, ...listaDeMensagens]);
+            .then(({data}) => {
+                // console.log('Criando mensagem:', data)
             });
         setMensagem('');
     }
@@ -127,6 +156,12 @@ export default function ChatPage() {
                                 fontSize: '20px'
                             }}
                         />
+                        <ButtonSendSticker
+                            onStickerClick={(sticker) => {
+                                // console.log('[USANDO O COMPONENTE] Salva esse sticker no banco de dados', sticker);
+                                handleNovaMensagem(`:sticker:${sticker}`);
+                            }}
+                        />
                         <Image
                             styleSheet={{
                                 width: '50px',
@@ -185,6 +220,7 @@ function MessageList(props) {
                 marginBottom: '16px',
             }}
         >
+            {/* {console.log('Antes do map', props.mensagens)} */}
             {props.mensagens.map((mensagem) => {
                 return (
                     <Text
@@ -228,7 +264,17 @@ function MessageList(props) {
                                 {(new Date().toLocaleDateString())}
                             </Text>
                         </Box>
-                        {mensagem.texto}
+                        {/* {console.log('Antes de startsWith', mensagem.texto)} */}
+                        {mensagem.texto.startsWith(':sticker:')
+                            ? (
+                                <Image src={mensagem.texto.replace(':sticker:','')} />
+                            )
+                            : (
+                                mensagem.texto
+                            )
+                        }
+
+                        {/* {mensagem.texto} */}
                     </Text>
                 );
             })}
